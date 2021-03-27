@@ -20,10 +20,8 @@ float Processor::Utilization() {
                 break;
         }
         // Calculate CPU usage percentage
-        this->PrevIdle = this->PrevIdle + this->PrevIowait;
         idle = idle + iowait;
         NonIdle = user + nice + system + irq + softirq + steal;
-        this->PrevTotal = this->PrevIdle + this->PrevNonIdle;
         Total = idle + NonIdle;
         totald = Total - this->PrevTotal;
         idled = idle - this->PrevIdle;
@@ -34,4 +32,5 @@ float Processor::Utilization() {
         this->PrevTotal = Total;
         this->PrevNonIdle = NonIdle;
     }
-    return cpu_percentage; }
+    return cpu_percentage; 
+    }
